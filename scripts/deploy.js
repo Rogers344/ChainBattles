@@ -18,4 +18,5 @@ const main = async () {
     }
 };
 
+//call main function
 main();
