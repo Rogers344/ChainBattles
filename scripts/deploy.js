@@ -2,6 +2,7 @@ import("@nomicfoundation/hardhat-toolbox");
 
 const hardhat = hre;
 
+//main function
 const main = async () {
     try {
         const nftContractFactory = await hre.ethers.getContractFactory(
