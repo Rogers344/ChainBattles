@@ -10,14 +10,13 @@ import "@openzeppelin/contracts/utils/Base64.sol";
 contract ChainBattles is ERC721URIStorage {
     using Strings for uint256;
     using Counters for Counters.Counter;
-    Counters.counter private _tokenIDs; //not sure if it is an s at the end.
-
+    Counters.counter private _tokenIDs; 
     mapping(uint256 => uint256) public tokenIDtoLevels;
 
     constructor() ERC721("ChainBattles", "CBTLS"){
 
     }
-
+    // generate the metadata
     function generateCharacter(uint256 tokenId) public returns(string memory){
 
         bytes memory svg = abi.encodePacked(
@@ -34,12 +33,12 @@ contract ChainBattles is ERC721URIStorage {
                 Base64.encode(svg)
         );    
     );
-
+    //get the level of the nft
     function getLevels(uint256 tokenId) public view returns (string memory) {
         uint256 levels = tokenIdToLevels[tokenId];
         return levels.toString();
     }
-
+    //get the URI address of the metadata
     function getTokenURI(uint256 tokenID) public view returns (string memory) {
         bytes memory dataURI = abi.encodePacked(
             '{'
@@ -56,7 +55,7 @@ contract ChainBattles is ERC721URIStorage {
             );
         )
     }
-
+    //adding minting capacity
     function mint() public {
         _tokenIds.increment();
         uint256 newItemId = _tokenIds.current();
@@ -64,7 +63,7 @@ contract ChainBattles is ERC721URIStorage {
         tokenIdtoLevels[newItemId] = 0;
         _setTokenURI(newItemId, getTokenURI(newItemId));
     }
-
+    //adding train to level up
     function train() public {
         require(_exists(tokenId), "Please use an existing token");
         require(ownerOf(tokenId) == msg.sender, "you must own this token to train it");
