@@ -38,7 +38,7 @@ contract ChainBattles is ERC721URIStorage {
         uint256 levels = tokenIdToLevels[tokenId];
         return levels.toString();
     }
-    //get    the      URI         address       of      the         metadata 
+    //get    the       URI         address       of      the         metadata 
     function getTokenURI(uint256 tokenID) public view returns (string memory) {
         bytes memory dataURI = abi.encodePacked(
             '{'
