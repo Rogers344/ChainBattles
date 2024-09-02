@@ -33,7 +33,7 @@ contract ChainBattles is ERC721URIStorage {
                 Base64.encode(svg)
         );    
     );
-    //get     the      level   of     the      nft
+    //get     the      level    of     the      nft
     function getLevels(uint256 tokenId) public view returns (string memory) {
         uint256 levels = tokenIdToLevels[tokenId];
         return levels.toString();
